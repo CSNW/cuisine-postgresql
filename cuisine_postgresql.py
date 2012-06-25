@@ -1,7 +1,11 @@
-from fabric.context_managers import cd, hide, settings
-from fabric.operations import sudo
-from fabric.utils import puts
-
+# Catch import error, so setup.py can inspect __version__, etc.
+try:
+    from fabric.context_managers import cd, hide, settings
+    from fabric.operations import sudo
+    from fabric.utils import puts
+except ImportError:
+    import warnings
+    warnings.warn('Using cuisine_postgresql without "fabric" package.')
 
 __version__ = '0.1.0'
 __maintainer__ = u'Atamert \xd6l\xe7gen'
